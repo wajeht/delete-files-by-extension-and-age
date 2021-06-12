@@ -24,11 +24,11 @@ function findOutFileAge(file) {
 /**
  * Get certain files recursively that are older than certain days.
  * @param {String} givenPath
- * @param {String} givenExtension
- * @param {Number} givenDays
+ * @param {String} givenFileExtension
+ * @param {Number} givenAgeInDays
  * @returns {Array}
  */
-function getFilesRecursively(givenPath, givenExtension, givenDays) {
+function getFilesRecursively(givenPath, givenFileExtension, givenAgeInDays) {
     try {
         // read all the files and folders
         fs.readdirSync(givenPath).forEach((currrentFile) => {
@@ -37,7 +37,11 @@ function getFilesRecursively(givenPath, givenExtension, givenDays) {
             // if you see a folder
             if (fs.statSync(currrentFileAbsolutePath).isDirectory()) {
                 // keep reading untill you don't see a sub folder
-                return getFilesRecursively(currrentFileAbsolutePath, givenExtension, givenDays);
+                return getFilesRecursively(
+                    currrentFileAbsolutePath,
+                    givenFileExtension,
+                    givenAgeInDays
+                );
             }
             // if you don't see a folder than, we've found the file
             // we can start to do whatever we want the files we've found
@@ -46,7 +50,7 @@ function getFilesRecursively(givenPath, givenExtension, givenDays) {
                 const currentFileType = currrentFileAbsolutePath.split('.').pop();
 
                 // then we filter out the file extension and how old the file is
-                if (currentFileType == givenExtension && daysOld >= givenDays) {
+                if (currentFileType == givenFileExtension && daysOld >= givenAgeInDays) {
                     // if the file met the crieta we set, push it to the array as object. So we can do whatever we want
                     return FILES_TO_DELETE.push({
                         path: currrentFileAbsolutePath,
