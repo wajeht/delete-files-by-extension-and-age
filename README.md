@@ -62,3 +62,5 @@ if the files end wit .js, .txt, .pdf, you wanna drop the . and only put the exte
     ```
     /C TITLE              delete files by extension and age  &ECHO.&ECHO.&ECHO.              All the log files that are more than 14 days old have been deleted!       &ECHO.&ECHO.&              TIMEOUT 10
     ```
+## license
+MIT @ wajeht 2021
