@@ -3,7 +3,7 @@ const DeleteFileByExtensionAndAge = require('./src/DeleteFileByExtensionAndAge.j
 // ------------------------------ MAIN ------------------------------
 (function main() {
     // constants
-    const CURRENT_PATH = 'Users/konyein/Desktop/test';
+    const CURRENT_PATH = '/Users/konyein/Desktop/test';
     const FILE_EXTENSION = 'json';
     const DAYS = 14;
 
@@ -11,4 +11,5 @@ const DeleteFileByExtensionAndAge = require('./src/DeleteFileByExtensionAndAge.j
     const myTask = new DeleteFileByExtensionAndAge();
     myTask.getFilesRecursively(CURRENT_PATH, FILE_EXTENSION, DAYS);
     myTask.printFilesToDelete();
+    myTask.deleteFiles();
 })();

@@ -50,8 +50,14 @@ class DeleteFileByExtensionAndAge {
 
                     // then we filter out the file extension and how old the file is
                     if (currentFileType == givenFileExtension && daysOld >= givenAgeInDays) {
-                        // if the file met the crieta we set, push it to the array as object. So we can do whatever we want
+                        // Debug
+                        // Checking to see if individual files arre there
+                        // if (this.#filesToDelete.length != 0) {
+                        //     console.log(this.#filesToDelete[this.#filesToDelete.length - 1]);
+                        //     console.log();
+                        // }
 
+                        // if the file met the crieta we set, push it to the array as object. So we can do whatever we want
                         return this.#filesToDelete.push({
                             path: currrentFileAbsolutePath,
                             lastModifiedDateTime: new Date(
@@ -73,7 +79,15 @@ class DeleteFileByExtensionAndAge {
      */
     deleteFiles(filePathArray) {
         try {
-            console.log('');
+            for (let i = 0; i < this.#filesToDelete.length; i++) {
+                const currentFile = this.#filesToDelete[i].path;
+                fs.unlink(currentFile, (error) => {
+                    if (error) {
+                        console.log('Failed to delete', currentFile);
+                    }
+                    console.log(currentFile, 'has been deleted!');
+                });
+            }
         } catch (error) {
             console.error(error.message);
         }
@@ -83,7 +97,23 @@ class DeleteFileByExtensionAndAge {
      * Print the files that youre going to be deleting
      */
     printFilesToDelete() {
-        console.table(this.#filesToDelete);
+        const oneFifthOfColumnLength = Math.round(process.stdout.columns / 5);
+        const emptySpaces = ' '.repeat(oneFifthOfColumnLength);
+        const stars = '*'.repeat(oneFifthOfColumnLength);
+        const found = ' FILES FOUND ';
+        const notFound = ' NOT FOUND ';
+
+        if (this.#filesToDelete.length) {
+            console.log();
+            console.log(emptySpaces, stars, found, stars, emptySpaces);
+            console.log();
+            console.table(this.#filesToDelete);
+            console.log();
+        } else {
+            console.log();
+            console.log(emptySpaces, stars, notFound, stars, emptySpaces);
+            console.log();
+        }
     }
 }
 
