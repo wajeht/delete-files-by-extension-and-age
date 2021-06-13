@@ -111,6 +111,7 @@ class DeleteFileByExtensionAndAge {
                 console.table(this.#filesToDelete);
                 console.log();
             }
+            throw Error('No files found!');
         } catch (error) {
             console.log(error.message);
         }
