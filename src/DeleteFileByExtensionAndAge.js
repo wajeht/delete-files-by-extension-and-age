@@ -46,10 +46,10 @@ class DeleteFileByExtensionAndAge {
                 // we can start to do whatever we want the files we've found
                 else {
                     const daysOld = this.#findOutFileAge(currrentFileAbsolutePath);
-                    const currentFileType = currrentFileAbsolutePath.split('.').pop();
+                    const currentFoundFile = currrentFileAbsolutePath.split('.').pop();
 
                     // then we filter out the file extension and how old the file is
-                    if (currentFileType == givenFileExtension && daysOld >= givenAgeInDays) {
+                    if (currentFoundFile == givenFileExtension && daysOld >= givenAgeInDays) {
                         // Debug
                         // Checking to see if individual files arre there
                         // if (this.#filesToDelete.length != 0) {
@@ -105,13 +105,13 @@ class DeleteFileByExtensionAndAge {
 
         if (this.#filesToDelete.length) {
             console.log();
-            console.log(emptySpaces, stars, found, stars, emptySpaces);
+            console.log( emptySpaces, stars, found, stars, emptySpaces );
             console.log();
             console.table(this.#filesToDelete);
             console.log();
         } else {
             console.log();
-            console.log(emptySpaces, stars, notFound, stars, emptySpaces);
+            console.log( emptySpaces, stars, notFound, stars, emptySpaces );
             console.log();
         }
     }
