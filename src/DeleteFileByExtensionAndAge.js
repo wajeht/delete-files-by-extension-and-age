@@ -50,7 +50,7 @@ class DeleteFileByExtensionAndAge {
 
                     // then we filter out the file extension and how old the file is
                     if (currentFoundFile == givenFileExtension && daysOld >= givenAgeInDays) {
-                        // Debug
+                        // ********** DEBUGGING CODE **********
                         // Checking to see if individual files arre there
                         // if (this.#filesToDelete.length != 0) {
                         //     console.log(this.#filesToDelete[this.#filesToDelete.length - 1]);
@@ -69,7 +69,7 @@ class DeleteFileByExtensionAndAge {
                 }
             });
         } catch (error) {
-            console.log(error);
+            console.log(error.message);
         }
     }
 
@@ -103,16 +103,16 @@ class DeleteFileByExtensionAndAge {
         const found = ' FILES FOUND ';
         const notFound = ' NOT FOUND ';
 
-        if (this.#filesToDelete.length) {
-            console.log();
-            console.log( emptySpaces, stars, found, stars, emptySpaces );
-            console.log();
-            console.table(this.#filesToDelete);
-            console.log();
-        } else {
-            console.log();
-            console.log( emptySpaces, stars, notFound, stars, emptySpaces );
-            console.log();
+        try {
+            if (this.#filesToDelete.length) {
+                console.log();
+                console.log(emptySpaces, stars, found, stars, emptySpaces);
+                console.log();
+                console.table(this.#filesToDelete);
+                console.log();
+            }
+        } catch (error) {
+            console.log(error.message);
         }
     }
 }
