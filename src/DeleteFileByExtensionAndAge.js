@@ -35,7 +35,7 @@ class DeleteFileByExtensionAndAge {
 
                 // if you see a folder
                 if (fs.statSync(currrentFileAbsolutePath).isDirectory()) {
-                    // keep reading untill you don't see a sub folder
+                    // keep reading until you don't see a sub folder
                     return this.getFilesRecursively(
                         currrentFileAbsolutePath,
                         givenFileExtension,
@@ -51,13 +51,13 @@ class DeleteFileByExtensionAndAge {
                     // then we filter out the file extension and how old the file is
                     if (currentFoundFile == givenFileExtension && daysOld >= givenAgeInDays) {
                         // ********** DEBUGGING CODE **********
-                        // Checking to see if individual files arre there
+                        // Checking to see if individual files are there
                         // if (this.#filesToDelete.length != 0) {
                         //     console.log(this.#filesToDelete[this.#filesToDelete.length - 1]);
                         //     console.log();
                         // }
 
-                        // if the file met the crieta we set, push it to the array as object. So we can do whatever we want
+                        // if the file met the criteria we set, push it to the array as object. So we can do whatever we want
                         return this.#filesToDelete.push({
                             path: currrentFileAbsolutePath,
                             lastModifiedDateTime: new Date(
@@ -94,7 +94,7 @@ class DeleteFileByExtensionAndAge {
     }
 
     /**
-     * Print the files that youre going to be deleting
+     * Print the files that you're going to be deleting
      */
     printFilesToDelete() {
         const oneFifthOfColumnLength = Math.round(process.stdout.columns / 5);
