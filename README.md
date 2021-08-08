@@ -44,7 +44,7 @@ if the files end wit .js, .txt, .pdf, you wanna drop the . and only put the exte
 
     for example:
 
-    ```
+    ```c#
     C:\Users\konyein\Development\delete-files-by-extension-and-age\index.js
     ```
 
@@ -63,7 +63,7 @@ if the files end wit .js, .txt, .pdf, you wanna drop the . and only put the exte
 
 5. within 'Add argument (optional):' text box, type in the follow command
 
-    ```
+    ```batch
     /C TITLE              delete files by extension and age  &ECHO.&ECHO.&ECHO.              All the log files that are more than 14 days old have been deleted!       &ECHO.&ECHO.&              TIMEOUT 10
     ```
 
